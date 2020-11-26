@@ -1,0 +1,20 @@
+{
+  "name": "unipix-back",
+  "version": "1.0.0",
+  "description": "IronHack project for 3rd module - Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leomezza/unipix-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leomezza/unipix-back/issues"
+  },
+  "homepage": "https://github.com/leomezza/unipix-back#readme"
+}
