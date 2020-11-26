@@ -1,5 +1,4 @@
 class ErrorHandling {
-  // eslint-disable-next-line no-unused-vars
   handle(error, req, res, next) {
     console.log(error);
 
