@@ -1,4 +1,4 @@
-import projectsRepository from '../repository/pix.repository';
+import pixRepository from '../repository/pix.repository';
 
 import ApplicationError from '../errors/ApplicationError';
 

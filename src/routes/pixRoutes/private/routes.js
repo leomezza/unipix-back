@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import Project from '../../../models/Project';
+import Project from '../../../models/Pix';
 
 import projectsMapper from '../../../mappers/projects.mapper';
 import projectsService from '../../../services/projects.service';
