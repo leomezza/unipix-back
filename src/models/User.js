@@ -1,22 +1,16 @@
 import { Schema, model } from 'mongoose';
 import joi from 'joi';
 
-import ApplicationError from '../errors/ApplicationError';
-
 const userSchema = new Schema(
   {
-    fullName: {
-      type: String, required: true, min: 5, max: 100,
-    },
-    email: {
-      type: String, required: true, min: 5, max: 100,
-    },
-    password: {
-      type: String, required: true, min: 5, max: 200,
-    },
-    imageURL: {
-      type: String, default: 'https://www.ecp.org.br/wp-content/uploads/2017/12/default-avatar.png',
-    },
+    tipo: {type: String, required: true, enum : ['F','J']},
+    fullName: {type: String, required: true},
+    password: {type: String, required: true}, 
+    email: { type: String, min: 5, max: 100},
+    docNumber: { type: String, required: true, max: 20 },
+    tel: { type: String,  max: 15 },
+    chavePix: [{type: Schema.Types.ObjectId, ref: 'Pix'}],
+    imgUrl: { type: String, max: 200 },
   },
   {
     timestamps: true,
@@ -28,8 +22,7 @@ class UserEntity {
     this.User = model('User', userSchema);
 
     this.fullName = joi.string().min(5).max(100).required();
-    this.email = joi.string().email().min(5).max(100)
-      .required();
+    this.email = joi.string().email().min(5).max(100).required();
     this.password = joi.string().min(5).max(100).required();
     this.imageURL = joi.string().min(5).max(200);
 
@@ -81,5 +74,6 @@ class UserEntity {
     return next();
   }
 }
+
 
 export default new UserEntity();

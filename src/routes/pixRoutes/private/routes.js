@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import Project from '../../../models/Pix';
+import Pix from '../../../models/Pix';
 
-import projectsMapper from '../../../mappers/projects.mapper';
-import projectsService from '../../../services/projects.service';
+import pixMapper from '../../../mappers/pix.mapper';
+import pixService from '../../../services/pix.service';
 
 import ApplicationError from '../../../errors/ApplicationError';
 
@@ -14,62 +14,62 @@ router.get('/list', async (req, res, next) => {
     const { id } = req.user;
     const { search } = req.query;
 
-    const projects = await projectsService.get(id, search);
+    const pix = await pixService.get(id, search);
 
-    return res.status(200).json(projects);
+    return res.status(200).json(pix);
   } catch (error) {
     return next(new ApplicationError(error));
   }
 });
 
-router.get('/list/:id', async (req, res, next) => {
-  try {
-    const { id } = req.params;
+// router.get('/list/:id', async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
 
-    const project = await projectsService.getOne(id);
+//     const pix = await pixService.getOne(id);
 
-    return res.status(200).json(project);
-  } catch (error) {
-    return next(new ApplicationError(error));
-  }
-});
+//     return res.status(200).json(pix);
+//   } catch (error) {
+//     return next(new ApplicationError(error));
+//   }
+// });
 
-router.post('/create', async (req, res, next) => {
-  try {
-    const { id } = req.user;
-    const newProjectInfo = req.body;
+// router.post('/create', async (req, res, next) => {
+//   try {
+//     const { id } = req.user;
+//     const newPixInfo = req.body;
 
-    await projectsService.create(newProjectInfo, id);
+//     await pixService.create(newPixInfo, id);
 
-    return res.status(201).json();
-  } catch (error) {
-    return next(new ApplicationError(error));
-  }
-});
+//     return res.status(201).json();
+//   } catch (error) {
+//     return next(new ApplicationError(error));
+//   }
+// });
 
-router.put('/update/:id', Project.validateUpdateParams, async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const updateObject = projectsMapper.updateOne(req.body);
+// router.put('/update/:id', Pix.validateUpdateParams, async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const updateObject = pixMapper.updateOne(req.body);
 
-    const updatedProject = await projectsService.updateOne(updateObject, id);
+//     const updatedPix = await pixService.updateOne(updateObject, id);
 
-    return res.status(200).json(updatedProject);
-  } catch (error) {
-    return next(new ApplicationError(error));
-  }
-});
+//     return res.status(200).json(updatedPix);
+//   } catch (error) {
+//     return next(new ApplicationError(error));
+//   }
+// });
 
-router.delete('/delete/:id', async (req, res, next) => {
-  try {
-    const { id } = req.params;
+// router.delete('/delete/:id', async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
 
-    await projectsService.deleteOne(id);
+//     await pixService.deleteOne(id);
 
-    return res.status(200).json();
-  } catch (error) {
-    return next(new ApplicationError(error));
-  }
-});
+//     return res.status(200).json();
+//   } catch (error) {
+//     return next(new ApplicationError(error));
+//   }
+// });
 
 export default router;

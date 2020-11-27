@@ -2,44 +2,44 @@ import pixRepository from '../repository/pix.repository';
 
 import ApplicationError from '../errors/ApplicationError';
 
-class ProjectsService {
-  constructor(projectsRepo) {
-    this.projectRepository = projectsRepo;
+class PixService {
+  constructor(pixRepo) {
+    this.pixRepository = pixRepo;
   }
 
   async get(id, search) {
     try {
-      const projectsFromDb = await this.projectRepository.get(id, search);
+      const pixFromDb = await this.pixRepository.get(id, search);
 
-      return projectsFromDb;
+      return pixFromDb;
     } catch (error) {
       throw new ApplicationError({ message: error.message, type: 'Projects - Get Method', status: 502 });
     }
   }
 
   async getOne(id) {
-    const projectFromDb = await this.projectRepository.getOne(id);
+    const pixFromDb = await this.pixRepository.getOne(id);
 
-    return projectFromDb;
+    return pixFromDb;
   }
 
-  async create(newProject, id) {
-    await this.projectRepository.create(newProject, id);
+  async create(newPix, id) {
+    await this.pixRepository.create(newPix, id);
   }
 
   async updateOne(updateObject, id) {
     try {
-      const updatedProject = await this.projectRepository.updateOne(updateObject, id);
+      const updatedPix = await this.pixRepository.updateOne(updateObject, id);
 
-      return updatedProject;
+      return updatedPix;
     } catch (error) {
       throw new ApplicationError({ message: error.message, status: 504 });
     }
   }
 
   async deleteOne(id) {
-    await this.projectRepository.deleteOne(id);
+    await this.pixRepository.deleteOne(id);
   }
 }
 
-export default new ProjectsService(projectsRepository);
+export default new PixService(pixRepository);
