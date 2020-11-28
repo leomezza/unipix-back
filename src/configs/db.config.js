@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 class MongoConnection {
   constructor(dbURL) {
@@ -19,4 +19,4 @@ class MongoConnection {
   }
 }
 
-export default MongoConnection;
+module.exports = MongoConnection;

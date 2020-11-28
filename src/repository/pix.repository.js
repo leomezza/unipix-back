@@ -11,7 +11,7 @@ class PixRepository {
     try {
       const regex = new RegExp(search, 'i');
 
-      const pix = await this.Pix.find({ owner: id, title: regex }).populate('tasks');
+      const pix = await this.Pix.find({ owner: id, title: regex });
 
       return pix;
     } catch (error) {
@@ -20,7 +20,7 @@ class PixRepository {
   }
 
   async getOne(id) {
-    const pix = await this.Pix.findById(id).populate('tasks');
+    const pix = await this.Pix.findById(id);
 
     return pix;
   }
@@ -55,21 +55,6 @@ class PixRepository {
     await this.Pix.findByIdAndDelete(id);
   }
 
-  // async addTaskToProject({ pixId, taskId }) {
-  //   await this.Pix.findByIdAndUpdate(
-  //     pixId,
-  //     { $push: { tasks: taskId } },
-  //     { useFindAndModify: false },
-  //   );
-  // }
-
-  // async removeTaskfromProject(pixId, taskId) {
-  //   await this.Pix.findByIdAndUpdate(
-  //     pixId,
-  //     { $pull: { tasks: taskId } },
-  //     { useFindAndModify: false },
-  //   );
-  // }
 }
 
 export default new PixRepository(Pix);

@@ -1,15 +1,17 @@
 import { Schema, model } from 'mongoose';
 import joi from 'joi';
 
+import ApplicationError from '../errors/ApplicationError';
+
 const userSchema = new Schema(
   {
-    tipo: {type: String, required: true, enum : ['F','J']},
-    fullName: {type: String, required: true},
-    password: {type: String, required: true}, 
-    email: { type: String, min: 5, max: 100},
+    tipo: { type: String, required: true, enum: ['F', 'J'] },
+    fullName: { type: String, required: true },
+    password: { type: String, required: true },
+    email: { type: String, unique: true, min: 5, max: 100 },
     docNumber: { type: String, required: true, max: 20 },
-    tel: { type: String,  max: 15 },
-    chavePix: [{type: Schema.Types.ObjectId, ref: 'Pix'}],
+    tel: { type: String, max: 15 },
+    // chavePix: [{ type: Schema.Types.ObjectId, ref: 'Pix' }],
     imgUrl: { type: String, max: 200 },
   },
   {
