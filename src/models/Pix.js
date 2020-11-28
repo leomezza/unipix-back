@@ -4,15 +4,15 @@ import ApplicationError from '../errors/ApplicationError';
 
 const pixSchema = new Schema(
   {
-    chave: { type: String, required: true, min: 5, max: 100 },
-    pixtype: { type: String, required: true, enum: ['CPF', 'CNPJ', 'EMail', 'Cel', 'Random'] },
-    obs: { type: String, max: 254 },
-    banco: { type: Schema.Types.ObjectId, ref: 'Banco' },
-    agencia: { type: String, max: 10 },
-    conta: { type: String, max: 15 },
+    key: { type: String, required: true, min: 5, max: 100 },
+    pixType: { type: String, required: true, enum: ['CPF', 'CNPJ', 'EMail', 'Cell', 'Random'] },
+    note: { type: String, max: 254 },
+    bank: { type: Schema.Types.ObjectId, ref: 'Bank' },
+    agency: { type: String, max: 10 },
+    account: { type: String, max: 15 },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
-    ownertype: { type: String, required: true, enum: ['P', 'T'] },
-    nomeTerceiro: { type: String, max: 100 },
+    ownertype: { type: String, required: true, enum: ['1', '2'] },
+    name3P: { type: String, max: 100 },
   },
   {
     timestamps: true,
