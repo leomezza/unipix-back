@@ -20,11 +20,12 @@ const pixSchema = new Schema(
 );
 
 pixSchema.statics.validateUpdateParams = (req, res, next) => {
-  if (req.body.title) {
+  console.log(req.body);
+  if (req.body.note || req.body.bank || req.body.agency || req.body.account || req.body.name3P) {
     return next();
   }
 
-  throw new ApplicationError({ message: 'asdassda', status: 401 });
+  throw new ApplicationError({ message: 'Erro no Update!!', status: 401 });
 };
 
 export default model('Pix', pixSchema);

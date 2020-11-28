@@ -7,9 +7,10 @@ class PixService {
     this.pixRepository = pixRepo;
   }
 
-  async get(id, search) {
+  async get(id, type) {
     try {
-      const pixFromDb = await this.pixRepository.get(id, search);
+      //const pixFromDb = await this.pixRepository.get(id, search);
+      const pixFromDb = await this.pixRepository.get(id, type);
 
       return pixFromDb;
     } catch (error) {
