@@ -20,7 +20,7 @@ const pixSchema = new Schema(
 );
 
 pixSchema.statics.validateUpdateParams = (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   if (req.body.note || req.body.bank || req.body.agency || req.body.account || req.body.name3P) {
     return next();
   }
