@@ -1,67 +1,69 @@
-require('dotenv').config();
+// require('dotenv').config();
+import {} from 'dotenv/config'
 
-const MongoConnection = require('../configs/db.config');
-const Banco = require('../models/Banco');
+import MongoConnection from '../configs/db.config';
+import Bank from '../models/Bank';
 
-console.log(process.env.MONGODB_URI);
+console.log(MongoConnection);
+//console.log(process.env.MONGODB_URI);
 const mongoConnection = new MongoConnection(process.env.MONGODB_URI);
 
 mongoConnection.startDbConnection();
 
-const bancoSeed = [
+const bankSeed = [
 	{
-		nome: 'Bradesco',
-		codigo: '237',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Bradesco',
+		code: '237',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Itaú Unibanco',
-		codigo: '341',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Itaú Unibanco',
+		code: '341',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Banco do Brasil',
-		codigo: '001',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Banco do Brasil',
+		code: '001',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Caixa Econômica Federal',
-		codigo: '104',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Caixa Econômica Federal',
+		code: '104',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Santander',
-		codigo: '033',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Santander',
+		code: '033',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Nu Pagamentos',
-		codigo: '260',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Nu Pagamentos',
+		code: '260',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Easynvest',
-		codigo: '140',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Easynvest',
+		code: '140',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Banco Original',
-		codigo: '212',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Banco Original',
+		code: '212',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Banco Neon',
-		codigo: '735',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Banco Neon',
+		code: '735',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 	{
-		nome: 'Banco Inter',
-		codigo: '077',
-		imgBanco: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		name: 'Banco Inter',
+		code: '077',
+		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
 	},
 ];
 
-Banco.create(bancoSeed)
+Bank.create(bankSeed)
 	.then((result) => {
 		console.log(`Criou ${result.length} bancos.`);
 	})
