@@ -28,7 +28,7 @@ class UserEntity {
     this.fullName = Joi.string().min(5).max(100).required();
     this.password = Joi.string().min(5).max(100).required();
     this.email = Joi.string().email().min(5).max(100).required();
-    this.docNumber = Joi.string().min(11).max(14).required();
+    // this.docNumber = req.body.type === 'A' ? Joi.document().cpf().required() : Joi.document().cnpj().required();
     this.tel = Joi.string().min(5).max(16).required();
     this.imgUrl = Joi.string().min(5).max(200);
 
@@ -42,7 +42,7 @@ class UserEntity {
       fullName: this.fullName,
       password: this.password,
       email: this.email,
-      docNumber: this.docNumber,
+      docNumber: req.body.type === 'A' ? Joi.document().cpf().required() : Joi.document().cnpj().required(),
       tel: this.tel,
       imgUrl: this.imgUrl,
     }).options({ abortEarly: false });
