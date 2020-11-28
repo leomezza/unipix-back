@@ -1,17 +1,19 @@
 import { Schema, model } from 'mongoose';
-import joi from 'joi';
+import validator from 'cpf-cnpj-validator';
+// import joi from 'joi';
+const Joi = require('joi').extend(validator);
 
 import ApplicationError from '../errors/ApplicationError';
 
 const userSchema = new Schema(
   {
     type: { type: String, required: true, enum: ['A', 'B'] }, //A-Física / B-Jurídica
-    fullName: { type: String, required: true },
-    password: { type: String, required: true },
-    email: { type: String, unique: true, min: 5, max: 100 },
-    docNumber: { type: String, required: true, max: 20 },
-    tel: { type: String, max: 15 },
-    imgUrl: { type: String, max: 200 },
+    fullName: { type: String, required: true, min: 5, max: 100 },
+    password: { type: String, required: true, min: 5, max: 100 },
+    email: { type: String, required: true, unique: true, min: 5, max: 100 },
+    docNumber: { type: String, required: true, min: 11, max: 14 },
+    tel: { type: String, required: true, min: 5, max: 16 },
+    imgUrl: { type: String, min: 5, max: 200 },
   },
   {
     timestamps: true,
@@ -22,21 +24,27 @@ class UserEntity {
   constructor() {
     this.User = model('User', userSchema);
 
-    this.fullName = joi.string().min(5).max(100).required();
-    this.email = joi.string().email().min(5).max(100).required();
-    this.password = joi.string().min(5).max(100).required();
-    this.imageURL = joi.string().min(5).max(200);
+    this.type = Joi.string().valid('A', 'B').required();
+    this.fullName = Joi.string().min(5).max(100).required();
+    this.password = Joi.string().min(5).max(100).required();
+    this.email = Joi.string().email().min(5).max(100).required();
+    this.docNumber = Joi.string().min(11).max(14).required();
+    this.tel = Joi.string().min(5).max(16).required();
+    this.imgUrl = Joi.string().min(5).max(200);
 
     this.validateSignupParams = this.validateSignupParams.bind(this);
     this.validateLoginParams = this.validateLoginParams.bind(this);
   }
 
   validateSignupParams(req, res, next) {
-    const signupUserSchema = joi.object({
+    const signupUserSchema = Joi.object({
+      type: this.type,
       fullName: this.fullName,
-      email: this.email,
       password: this.password,
-      imageURL: this.imageURL,
+      email: this.email,
+      docNumber: this.docNumber,
+      tel: this.tel,
+      imgUrl: this.imgUrl,
     }).options({ abortEarly: false });
 
     const joiValidation = signupUserSchema.validate(req.body);
@@ -55,9 +63,9 @@ class UserEntity {
   }
 
   validateLoginParams(req, res, next) {
-    const loginUserSchema = joi.object({
-      email: this.email,
+    const loginUserSchema = Joi.object({
       password: this.password,
+      email: this.email,
     }).options({ abortEarly: false });
 
     const joiValidation = loginUserSchema.validate(req.body);
@@ -75,6 +83,5 @@ class UserEntity {
     return next();
   }
 }
-
 
 export default new UserEntity();

@@ -11,7 +11,7 @@ const pixSchema = new Schema(
     agency: { type: String, max: 10 },
     account: { type: String, max: 15 },
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
-    ownertype: { type: String, required: true, enum: ['1', '2'] },
+    ownertype: { type: String, required: true, enum: ['1', '2'] }, //1-Próprio / B-Terceiro
     name3P: { type: String, max: 100 },
   },
   {
