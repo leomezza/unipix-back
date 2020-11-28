@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import projectsPrivateRoutes from './private/routes';
+import pixPrivateRoutes from './private/routes';
 
 const router = Router();
 
-router.use('/private', projectsPrivateRoutes);
+router.use('/private', pixPrivateRoutes);
 
 export default router;

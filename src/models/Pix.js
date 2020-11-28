@@ -1,20 +1,23 @@
 import { Schema, model } from 'mongoose';
 
-import ApplicationError from '../errors/ApplicationError';
-
-const projectSchema = new Schema(
+const pixSchema = new Schema(
   {
-    title: String,
-    description: String,
-    tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
-    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+    chave: {type: String, required: true, min: 5, max: 100},
+    pixtype: {type: String, required: true, enum : ['CPF', 'CNPJ', 'EMail', 'Cel', 'Random']},
+    obs: {type: String, max: 254}, 
+    banco: { type: Schema.Types.ObjectId, ref: 'Banco'},
+    agencia: { type: String,  max: 10 },
+    conta: { type: String,  max: 15 },
+    owner: {type: Schema.Types.ObjectId, ref: 'User'},
+    ownertype: {type: String, required: true, enum : ['P','T']},
+    nomeTerceiro: {type: String,  max: 100},
   },
   {
     timestamps: true,
   },
 );
 
-projectSchema.statics.validateUpdateParams = (req, res, next) => {
+pixSchema.statics.validateUpdateParams = (req, res, next) => {
   if (req.body.title) {
     return next();
   }
@@ -22,4 +25,4 @@ projectSchema.statics.validateUpdateParams = (req, res, next) => {
   throw new ApplicationError({ message: 'asdassda', status: 401 });
 };
 
-export default model('Project', projectSchema);
+export default model('Pix', pixSchema);
