@@ -33,7 +33,7 @@ class PixRepository {
     } catch (error) {
       throw new ApplicationError(
         {
-          message: 'Error while performing an database operation',
+          message: 'Error while performing a database operation',
           type: 'ProjectRepository - create method',
           status: 409,
         },
