@@ -13,7 +13,7 @@ const userSchema = new Schema(
     email: { type: String, required: true, unique: true, min: 5, max: 100 },
     docNumber: { type: String, required: true, min: 11, max: 14 },
     tel: { type: String, required: true, min: 5, max: 16 },
-    imgUrl: { type: String, min: 5, max: 200 },
+    imgUrl: { type: String, min: 5, max: 200, default: 'https://www2.d125.org/applied_arts/teched/courses/WEB/portfolios/2014_SpringP3/benyukhis_portfolio/Widget_Benyukhis/images/Michael-Jordan-Championship-Rings.jpg' },
   },
   {
     timestamps: true,
