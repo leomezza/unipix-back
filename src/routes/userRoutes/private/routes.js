@@ -6,9 +6,9 @@ import ApplicationError from '../../../errors/ApplicationError';
 
 const router = Router();
 
-router.get('/list/:id', async (req, res, next) => {
+router.get('/info', async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { id } = req.user;
 
     const user = await userService.getOne(id);
 
@@ -18,9 +18,9 @@ router.get('/list/:id', async (req, res, next) => {
   }
 });
 
-router.put('/update/:id', async (req, res, next) => {
+router.put('/update', async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { id } = req.user;
     const updateObject = req.body;
 
     const updatedUser = await userService.updateOne(updateObject, id);
