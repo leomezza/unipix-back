@@ -1,4 +1,5 @@
 import userRepository from '../repository/user.repository';
+import passwordUtils from '../utils/password.utils';
 
 import ApplicationError from '../errors/ApplicationError';
 
@@ -15,7 +16,8 @@ class UserService {
 
   async updateOne(updateObject, id) {
     try {
-      const updatedUser = await this.userRepository.updateOne(updateObject, id);
+      const userCryptPwd = { ...updateObject, password: passwordUtils.encrypt(updateObject.password) };
+      const updatedUser = await this.userRepository.updateOne(userCryptPwd, id);
 
       return updatedUser;
     } catch (error) {
