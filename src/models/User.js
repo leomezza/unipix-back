@@ -13,6 +13,7 @@ const userSchema = new Schema(
     email: { type: String, required: true, unique: true, min: 5, max: 100 },
     docNumber: { type: String, required: true, min: 11, max: 14 },
     tel: { type: String, required: true, min: 5, max: 16 },
+    city: { type: String, max: 100, default: 'São Paulo' },
     imgUrl: { type: String, min: 5, max: 200, default: 'https://www2.d125.org/applied_arts/teched/courses/WEB/portfolios/2014_SpringP3/benyukhis_portfolio/Widget_Benyukhis/images/Michael-Jordan-Championship-Rings.jpg' },
   },
   {
@@ -30,6 +31,7 @@ class UserEntity {
     this.email = Joi.string().email().min(5).max(100).required();
     // this.docNumber = req.body.type === 'A' ? Joi.document().cpf().required() : Joi.document().cnpj().required();
     this.tel = Joi.string().min(5).max(16).required();
+    this.city = Joi.string().max(100);
     this.imgUrl = Joi.string().min(5).max(200);
 
     this.validateSignupParams = this.validateSignupParams.bind(this);
@@ -44,6 +46,7 @@ class UserEntity {
       email: this.email,
       docNumber: req.body.type === 'A' ? Joi.document().cpf().required() : Joi.document().cnpj().required(),
       tel: this.tel,
+      city: this.city,
       imgUrl: this.imgUrl,
     }).options({ abortEarly: false });
 
