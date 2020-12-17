@@ -19,27 +19,27 @@ const bankSeed = [
 	{
 		name: 'Itaú Unibanco',
 		code: '341',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://cdn.worldvectorlogo.com/logos/itau-2.svg',
 	},
 	{
 		name: 'Banco do Brasil',
 		code: '001',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://wedologos.bladecdn.net/wp-content/uploads/2011/12/banco-do-brasil-logo.jpg',
 	},
 	{
 		name: 'Caixa Econômica Federal',
 		code: '104',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://kontaazul.com.br/wp-content/uploads/2020/04/como-consultar-saldo-na-caixa-economica.png',
 	},
 	{
 		name: 'Santander',
 		code: '033',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://i.pinimg.com/originals/51/f2/4d/51f24d5b82b99033f301a14913ec95e4.png',
 	},
 	{
 		name: 'Nu Pagamentos',
 		code: '260',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://meutudo.com.br/blog/wp-content/uploads/elementor/thumbs/pasted-image-0-30-ouvzn2e2prcj42nxh14ty98m0999gll4oow1gp73q8.png',
 	},
 	{
 		name: 'Easynvest',
@@ -49,12 +49,12 @@ const bankSeed = [
 	{
 		name: 'Banco Original',
 		code: '212',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://comotrabalhar.org/wp-content/uploads/2016/10/empregos-banco-original.png',
 	},
 	{
 		name: 'Banco Neon',
 		code: '735',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://credproduzir.com/wp-content/uploads/2020/04/codigo-do-neon-para-transferencia-ted.png',
 	},
 	{
 		name: 'Banco Inter',
