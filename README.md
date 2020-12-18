@@ -1,4 +1,4 @@
-<img src="./src/img/UniPix-logo.png" width="150" height="150" alt="Unipix Logo">
+<img src="./UniPix-logo.png" width="150" height="150" alt="Unipix Logo">
 
 # UniPix Back-End
 
