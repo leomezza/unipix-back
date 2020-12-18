@@ -16,8 +16,14 @@ class UserService {
 
   async updateOne(updateObject, id) {
     try {
-      const userCryptPwd = { ...updateObject, password: passwordUtils.encrypt(updateObject.password) };
-      const updatedUser = await this.userRepository.updateOne(userCryptPwd, id);
+      let updatedUser = {};
+      if (updateObject.password) {
+        const userCryptPwd = { ...updateObject, password: passwordUtils.encrypt(updateObject.password) };
+        updatedUser = await this.userRepository.updateOne(userCryptPwd, id);
+
+      } else {
+        updatedUser = await this.userRepository.updateOne(updateObject, id);
+      }
 
       return updatedUser;
     } catch (error) {

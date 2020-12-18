@@ -44,7 +44,7 @@ const bankSeed = [
 	{
 		name: 'Easynvest',
 		code: '140',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://theme.zdassets.com/theme_assets/1130385/0290357291ec4f3e2975f9b58183a608414fbf8d.png',
 	},
 	{
 		name: 'Banco Original',
@@ -59,7 +59,7 @@ const bankSeed = [
 	{
 		name: 'Banco Inter',
 		code: '077',
-		imgBank: 'https://logodownload.org/wp-content/uploads/2018/09/bradesco-logo-1.png',
+		imgBank: 'https://logospng.org/download/banco-inter/logo-banco-inter-256.png',
 	},
 ];
 
